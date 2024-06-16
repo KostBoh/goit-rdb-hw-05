@@ -1,0 +1,16 @@
+DROP FUNCTION IF EXISTS DivisionNumber;
+
+DELIMITER //
+CREATE FUNCTION `DivisionNumber` (first_number FLOAT, second_number FLOAT ) 
+RETURNS FLOAT
+DETERMINISTIC
+NO SQL
+BEGIN
+DECLARE result FLOAT;
+SET result = first_number / second_number;
+RETURN result;
+END//
+DELIMITER ;
+
+select id, quantity, hw3.DivisionNumber(quantity, 2) AS FunctionDivisionTo2
+FROM order_details;
